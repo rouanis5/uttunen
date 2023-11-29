@@ -1,3 +1,5 @@
+import { Calc } from './Calc'
+
 export const Main = ({ body }: { body?: any }) => {
   return (
     <html lang="en">
@@ -8,14 +10,7 @@ export const Main = ({ body }: { body?: any }) => {
         {/* <script src="https://cdn.tailwindcss.com"></script> */}
       </head>
       <body>
-        <form hx-put="/calc" hx-target="#result" hx-swap="innerHTML">
-          <input type="number" name="num0" value="0" />
-          <input type="number" name="num1" value="0" />
-          <p>
-            result: <b id="result">0</b>
-          </p>
-          <button>submit</button>
-        </form>
+        <Calc />
       </body>
       <script
         src="https://unpkg.com/htmx.org@1.9.9"
