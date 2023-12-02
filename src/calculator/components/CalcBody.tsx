@@ -1,12 +1,9 @@
-import { formatOperand } from '..'
+import CalcScreen from './CalcScreen'
+import NumberBtn from './NumberBtn'
+import OperatorBtn from './OperatorBtn'
+import CalcState from '../interfaces/CalcState.interface'
 
-interface CalcState {
-  current?: string
-  previous?: string
-  operator?: string
-}
-
-export const Calc = ({
+const CalcBody = ({
   current = '',
   previous = '',
   operator = '',
@@ -44,35 +41,4 @@ export const Calc = ({
   )
 }
 
-export const NumberBtn = ({ digit }: { digit: number | '.' }) => {
-  return (
-    <button hx-put="/insert" name="next" value={digit.toString()}>
-      {digit}
-    </button>
-  )
-}
-
-export const OperatorBtn = (params: {
-  operator: '+' | '-' | '*' | '/' | '='
-}) => {
-  return (
-    <button hx-put="/calc" name="operation" value={params.operator}>
-      {params.operator}
-    </button>
-  )
-}
-
-export const CalcScreen = ({
-  current = '',
-  previous = '',
-  operator = '',
-}: CalcState) => {
-  return (
-    <div id="CalcScreen">
-      <p>{!current ? '0' : formatOperand(current)}</p>
-      <input type="hidden" name="previous" value={previous} />
-      <input type="hidden" name="operator" value={operator} />
-      <input type="hidden" name="current" value={current} />
-    </div>
-  )
-}
+export default CalcBody

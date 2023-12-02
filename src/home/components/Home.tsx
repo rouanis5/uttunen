@@ -1,6 +1,6 @@
-import { Calc } from './Calc'
+import CalcBody from '../../calculator/components/CalcBody'
 
-export const Main = ({ body }: { body?: any }) => {
+export const Home = () => {
   return (
     <html lang="en">
       <head>
@@ -10,7 +10,7 @@ export const Main = ({ body }: { body?: any }) => {
         {/* <script src="https://cdn.tailwindcss.com"></script> */}
       </head>
       <body>
-        <Calc />
+        <CalcBody />
       </body>
       <script
         src="https://unpkg.com/htmx.org@1.9.9"
@@ -21,4 +21,4 @@ export const Main = ({ body }: { body?: any }) => {
   )
 }
 
-export default Main
+export default Home
