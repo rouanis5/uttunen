@@ -1,10 +1,16 @@
 import { CalculatorState } from '../interfaces/calculatorState.abstract'
 
 export default class StartState extends CalculatorState {
-  public handle1(): void {
+  public clearScreen(): void {
     throw new Error('Method not implemented.')
   }
-  public handle2(): void {
+  public addDigit(): void {
+    throw new Error('Method not implemented.')
+  }
+  public selectOperation(): void {
+    throw new Error('Method not implemented.')
+  }
+  public printResult(): void {
     throw new Error('Method not implemented.')
   }
 }

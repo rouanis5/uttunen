@@ -16,11 +16,19 @@ export default class CalculatorContext {
     this.state.setContext(this)
   }
 
-  public request1(): void {
-    this.state.handle1()
+  public clearScreen(): void {
+    this.state.clearScreen()
   }
 
-  public request2(): void {
-    this.state.handle2()
+  public addDigit(): void {
+    this.state.addDigit()
+  }
+
+  public selectOperation(): void {
+    this.state.selectOperation()
+  }
+
+  public printResult(): void {
+    this.state.printResult()
   }
 }
