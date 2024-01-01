@@ -4,7 +4,7 @@ Uttunen is an advanced calculator built with latest hot technologies
 
 ## Installation
 
-Use the new javascript runtime [bun](https://bun.sh/) to install all dependecies.
+Use the bun runtime [bun](https://bun.sh/) to install all dependecies.
 
 ```bash
 bun install
@@ -26,8 +26,8 @@ $ bun test
 ## Technologies
 
 - Bun
-- Elysia
 - Typescript <3
+- Elysia
 - HTMX
 - Docker
 
