@@ -7,11 +7,11 @@ export abstract class CalculatorState {
     this.context = context
   }
 
-  public abstract clearScreen(): void
+  public abstract onClear(): void
 
-  public abstract addDigit(): void
+  public abstract onType(): void
 
-  public abstract selectOperation(): void
+  public abstract onOperate(): void
 
-  public abstract printResult(): void
+  public abstract onDisplay(): void
 }

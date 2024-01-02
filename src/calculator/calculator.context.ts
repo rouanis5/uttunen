@@ -17,18 +17,18 @@ export default class CalculatorContext {
   }
 
   public clearScreen(): void {
-    this.state.clearScreen()
+    this.state.onClear()
   }
 
   public addDigit(): void {
-    this.state.addDigit()
+    this.state.onType()
   }
 
   public selectOperation(): void {
-    this.state.selectOperation()
+    this.state.onOperate()
   }
 
   public printResult(): void {
-    this.state.printResult()
+    this.state.onDisplay()
   }
 }
