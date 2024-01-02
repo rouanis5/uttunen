@@ -7,9 +7,11 @@ export abstract class CalculatorState {
     this.context = context
   }
 
+  public abstract getStateName(): string
+
   public abstract onClear(): void
 
-  public abstract onType(): void
+  public abstract onInsert(): void
 
   public abstract onOperate(): void
 

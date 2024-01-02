@@ -1,13 +1,24 @@
+import calculatorService from './calculator.service'
+import { CalculatorDTO, Operator } from './dto/calculator.dto'
 import { CalculatorState } from './interfaces/calculatorState.abstract'
 
 export default class CalculatorContext {
   private state!: CalculatorState
 
-  private current: number = 0
-  private op?: string
-  private previous?: number
+  private current!: number
+  private op?: Operator
+  private previous!: number
 
-  constructor(state: CalculatorState) {
+  constructor(
+    private calculatorService: calculatorService,
+    state: CalculatorState,
+    data?: CalculatorDTO
+  ) {
+    if (!data) {
+      this.reset()
+    } else {
+      this.setData(data)
+    }
     this.transitionTo(state)
   }
 
@@ -21,7 +32,7 @@ export default class CalculatorContext {
   }
 
   public addDigit(): void {
-    this.state.onType()
+    this.state.onInsert()
   }
 
   public selectOperation(): void {
@@ -30,5 +41,26 @@ export default class CalculatorContext {
 
   public printResult(): void {
     this.state.onDisplay()
+  }
+
+  public reset(): void {
+    this.current = 0
+    this.op = undefined
+    this.previous = 0
+  }
+
+  public setData(data: CalculatorDTO): void {
+    this.current = data.current
+    this.previous = data.previous
+    this.op = data.op
+  }
+
+  public export() {
+    return {
+      current: this.current,
+      op: this.op,
+      previous: this.previous,
+      state: this.state.getStateName(),
+    }
   }
 }
