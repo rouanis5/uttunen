@@ -4,24 +4,27 @@ import { CalculatorState } from '../interfaces/calculatorState.abstract'
 import SavedState from './saved.state'
 import TypingOneState from './typingOne.state'
 
-export default class StartState extends CalculatorState {
+export default class CalculatedState extends CalculatorState {
   public getStateName(): StateEnum {
-    return 'START_STATE'
+    return 'CALCULATED_STATE'
   }
 
-  // do nothing
-  public onClear(): void {}
+  public onClear(): void {
+    this.context.reset()
+  }
 
   public onInsert(digit: string): void {
+    this.context.reset()
     this.context.insertDigit(digit)
     this.context.transitionTo(new TypingOneState())
   }
 
-  public onOperate(op: OperatorDTO): void {
-    this.context.changeOperator(op)
+  public onOperate(operator: OperatorDTO): void {
+    this.context.changeOperator(operator)
     this.context.transitionTo(new SavedState())
   }
 
-  // do nothing
-  public onEvaluate(): void {}
+  public onEvaluate(): void {
+    this.context.calculate()
+  }
 }

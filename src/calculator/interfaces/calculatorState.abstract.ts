@@ -1,4 +1,5 @@
 import CalculatorContext from '../calculator.context'
+import { OperatorDTO } from '../dto/operator.dto'
 import { StateEnum } from '../dto/state.dto'
 
 export abstract class CalculatorState {
@@ -12,9 +13,9 @@ export abstract class CalculatorState {
 
   public abstract onClear(): void
 
-  public abstract onInsert(): void
+  public abstract onInsert(digit: string): void
 
-  public abstract onOperate(): void
+  public abstract onOperate(operator: OperatorDTO): void
 
-  public abstract onDisplay(): void
+  public abstract onEvaluate(): void
 }

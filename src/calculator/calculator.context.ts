@@ -1,8 +1,9 @@
 import calculatorService from './calculator.service'
-import { CalculatorDTO } from './dto/calculator.dto'
+import { CalculatorDTO, OperandsDTO } from './dto/calculator.dto'
 import { OperatorDTO } from './dto/operator.dto'
 import { StateDTO } from './dto/state.dto'
 import { CalculatorState } from './interfaces/calculatorState.abstract'
+import StartState from './states/start.state'
 
 export default class CalculatorContext {
   private state!: CalculatorState
@@ -29,32 +30,50 @@ export default class CalculatorContext {
     this.state.setContext(this)
   }
 
-  public clearScreen(): void {
+  public onClear(): void {
     this.state.onClear()
   }
 
-  public addDigit(): void {
-    this.state.onInsert()
+  public onInsert(digit: string): void {
+    this.state.onInsert(digit)
   }
 
-  public selectOperation(): void {
-    this.state.onOperate()
+  public onOperate(operator: OperatorDTO): void {
+    this.state.onOperate(operator)
   }
 
-  public printResult(): void {
-    this.state.onDisplay()
+  public onEvaluate(): void {
+    this.state.onEvaluate()
   }
 
   public reset(): void {
+    this.transitionTo(new StartState())
     this.current = 0
     this.op = undefined
     this.previous = 0
   }
 
-  public setData(data: CalculatorDTO): void {
+  public insertDigit(digit: string): void {}
+
+  public changeOperator(op: OperatorDTO): void {}
+
+  public calculate(): void {
+    // just make calculation and put it in previous
+  }
+
+  private setData(data: CalculatorDTO): void {
     this.current = data.current
     this.previous = data.previous
     this.op = data.op
+  }
+
+  public setOperands(operands: Partial<OperandsDTO>): void {}
+
+  public getOperands(): OperandsDTO {
+    return {
+      current: this.current,
+      previous: this.previous,
+    }
   }
 
   public export(): StateDTO {
