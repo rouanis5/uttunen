@@ -1,14 +1,16 @@
 import calculatorService from './calculator.service'
 import { CalculatorDTO, OperandsDTO } from './dto/calculator.dto'
+import { DigitDTO } from './dto/digit.dto'
 import { OperatorDTO } from './dto/operator.dto'
 import { StateDTO } from './dto/state.dto'
 import { CalculatorState } from './interfaces/calculatorState.abstract'
+import ErrorState from './states/error.state'
 import StartState from './states/start.state'
 
 export default class CalculatorContext {
   private state!: CalculatorState
 
-  private current!: number
+  private current!: string
   private op?: OperatorDTO
   private previous!: number
 
@@ -34,7 +36,7 @@ export default class CalculatorContext {
     this.state.onClear()
   }
 
-  public onInsert(digit: string): void {
+  public onInsert(digit: DigitDTO): void {
     this.state.onInsert(digit)
   }
 
@@ -46,19 +48,35 @@ export default class CalculatorContext {
     this.state.onEvaluate()
   }
 
-  public reset(): void {
-    this.transitionTo(new StartState())
-    this.current = 0
+  public reset(noTransition = false): void {
+    if (!noTransition) {
+      this.transitionTo(new StartState())
+    }
+    this.current = '0'
     this.op = undefined
     this.previous = 0
   }
 
   public insertDigit(digit: string): void {}
 
-  public changeOperator(op: OperatorDTO): void {}
+  public changeOperator(op: OperatorDTO): void {
+    this.op = op
+  }
 
   public calculate(): void {
     // just make calculation and put it in previous
+    try {
+      const result = this.calculatorService.evaluate({
+        op: this.op,
+        current: parseFloat(this.current),
+        previous: this.previous,
+      })
+
+      this.reset(true)
+      this.previous = result
+    } catch (error) {
+      this.transitionTo(new ErrorState())
+    }
   }
 
   private setData(data: CalculatorDTO): void {

@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { operatorDTOSchema } from './operator.dto'
 
 export const operandsDTOSchema = z.object({
-  current: z.coerce.number(),
+  current: z.coerce.string().regex(/^(0|[1-9]\d*)(\.\d+)?$/),
   previous: z.coerce.number(),
 })
 

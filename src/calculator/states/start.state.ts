@@ -1,3 +1,4 @@
+import { DigitDTO } from '../dto/digit.dto'
 import { OperatorDTO } from '../dto/operator.dto'
 import { StateEnum } from '../dto/state.dto'
 import { CalculatorState } from '../interfaces/calculatorState.abstract'
@@ -12,7 +13,7 @@ export default class StartState extends CalculatorState {
   // do nothing
   public onClear(): void {}
 
-  public onInsert(digit: string): void {
+  public onInsert(digit: DigitDTO): void {
     this.context.insertDigit(digit)
     this.context.transitionTo(new TypingOneState())
   }

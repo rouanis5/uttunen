@@ -1,14 +1,14 @@
-import { CalculatorDTO } from './dto/calculator.dto'
+import { OperatorDTO } from './dto/operator.dto'
 
 export default class calculatorService {
-  INTEGER_FORMATTER = new Intl.NumberFormat('en-us', {
+  private INTEGER_FORMATTER = new Intl.NumberFormat('en-us', {
     maximumFractionDigits: 0,
   })
 
-  formatOperand(number: number) {
+  formatOperand(number: string): string {
     const operand = number
 
-    const [interger, decimal] = operand.toString().split('.')
+    const [interger, decimal] = operand.split('.')
 
     if (decimal == null) {
       return this.INTEGER_FORMATTER.format(parseInt(interger))
@@ -17,7 +17,15 @@ export default class calculatorService {
     return `${this.INTEGER_FORMATTER.format(parseInt(interger))}.${decimal}`
   }
 
-  evaluate({ previous, current, op }: CalculatorDTO): number {
+  evaluate({
+    previous,
+    current,
+    op,
+  }: {
+    previous: number
+    current: number
+    op?: OperatorDTO
+  }): number {
     switch (op) {
       case '+':
         return previous + current
@@ -26,9 +34,12 @@ export default class calculatorService {
       case '*':
         return previous * current
       case '/':
+        if (current === 0) {
+          throw new Error('division by zero')
+        }
         return previous / current
       default:
-        return NaN
+        throw new Error('No operator found!')
     }
   }
 }
