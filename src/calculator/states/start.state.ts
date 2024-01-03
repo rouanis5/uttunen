@@ -1,7 +1,8 @@
+import { StateEnum } from '../dto/state.dto'
 import { CalculatorState } from '../interfaces/calculatorState.abstract'
 
 export default class StartState extends CalculatorState {
-  public getStateName(): string {
+  public getStateName(): StateEnum {
     return 'START_STATE'
   }
 

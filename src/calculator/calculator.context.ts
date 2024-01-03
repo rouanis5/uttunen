@@ -1,12 +1,14 @@
 import calculatorService from './calculator.service'
-import { CalculatorDTO, Operator } from './dto/calculator.dto'
+import { CalculatorDTO } from './dto/calculator.dto'
+import { OperatorDTO } from './dto/operator.dto'
+import { StateDTO } from './dto/state.dto'
 import { CalculatorState } from './interfaces/calculatorState.abstract'
 
 export default class CalculatorContext {
   private state!: CalculatorState
 
   private current!: number
-  private op?: Operator
+  private op?: OperatorDTO
   private previous!: number
 
   constructor(
@@ -55,7 +57,7 @@ export default class CalculatorContext {
     this.op = data.op
   }
 
-  public export() {
+  public export(): StateDTO {
     return {
       current: this.current,
       op: this.op,

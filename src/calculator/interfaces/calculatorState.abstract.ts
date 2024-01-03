@@ -1,4 +1,5 @@
 import CalculatorContext from '../calculator.context'
+import { StateEnum } from '../dto/state.dto'
 
 export abstract class CalculatorState {
   protected context!: CalculatorContext
@@ -7,7 +8,7 @@ export abstract class CalculatorState {
     this.context = context
   }
 
-  public abstract getStateName(): string
+  public abstract getStateName(): StateEnum
 
   public abstract onClear(): void
 
