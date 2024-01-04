@@ -1,12 +1,10 @@
-import CalcState from '../interfaces/CalcState.interface'
-
-const CalcScreen = ({ current, previous, operator }: CalcState) => {
+const CalcScreen = ({ current = '', previous = '', operator = '' }) => {
   return (
     <div id="CalcScreen">
-      <p>{current ?? '0'}</p>
-      <input type="hidden" name="previous" value={previous} />
-      <input type="hidden" name="operator" value={operator} />
-      <input type="hidden" name="current" value={current} />
+      <p>
+        {previous} {operator}
+      </p>
+      <p>{current}</p>
     </div>
   )
 }

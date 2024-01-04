@@ -1,7 +1,7 @@
-const OperatorBtn = (params: { operator: '+' | '-' | '*' | '/' | '=' }) => {
+const OperatorBtn = ({ operator = '' }) => {
   return (
-    <button hx-put="/calc" name="operation" value={params.operator}>
-      {params.operator}
+    <button hx-put="/calc" name="operation" value={operator}>
+      {operator}
     </button>
   )
 }

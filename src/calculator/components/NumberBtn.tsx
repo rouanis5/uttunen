@@ -1,6 +1,6 @@
-const NumberBtn = ({ digit }: { digit: number | '.' }) => {
+const NumberBtn = ({ digit = '' }) => {
   return (
-    <button hx-put="/insert" name="next" value={digit.toString()}>
+    <button hx-put="/insert" name="next" value={digit}>
       {digit}
     </button>
   )

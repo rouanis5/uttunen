@@ -1,5 +1,3 @@
-import CalcBody from '../../calculator/components/CalcBody'
-
 export const Home = () => {
   return (
     <html lang="en">
@@ -10,7 +8,7 @@ export const Home = () => {
         {/* <script src="https://cdn.tailwindcss.com"></script> */}
       </head>
       <body>
-        <CalcBody />
+        <div hx-get="/calc" hx-trigger="load" hx-swap="outerHTML"></div>
       </body>
       <script
         src="https://unpkg.com/htmx.org@1.9.9"
