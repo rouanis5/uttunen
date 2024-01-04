@@ -57,7 +57,10 @@ export default class CalculatorContext {
     this.previous = 0
   }
 
-  public insertDigit(digit: string): void {}
+  public insertDigit(digit: DigitDTO): void {
+    if (this.current === '0' && digit === '0') return
+    this.current += digit
+  }
 
   public changeOperator(op: OperatorDTO): void {
     this.op = op
@@ -85,7 +88,15 @@ export default class CalculatorContext {
     this.op = data.op
   }
 
-  public setOperands(operands: Partial<OperandsDTO>): void {}
+  public setOperands(operands: Partial<OperandsDTO>): void {
+    if (!!operands.current) {
+      this.current = operands.current
+    }
+
+    if (!!operands.previous) {
+      this.previous = operands.previous
+    }
+  }
 
   public getOperands(): OperandsDTO {
     return {
