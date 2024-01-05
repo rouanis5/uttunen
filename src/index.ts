@@ -1,7 +1,7 @@
 import { Elysia } from 'elysia'
 import { html } from '@elysiajs/html'
-import homeRoutes from '#home/home.routes'
-import calculatorRoutes from '#calculator/calculator.routes'
+import { homeRoutes } from '#home'
+import { calculatorRoutes } from '#calculator'
 
 const app = new Elysia({})
   .use(html())

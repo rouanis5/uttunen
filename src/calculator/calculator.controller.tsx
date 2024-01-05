@@ -1,6 +1,6 @@
 import { CalcBody } from '#calculator/components'
 
-export default class CalculatorController {
+export class CalculatorController {
   get() {
     return <CalcBody />
   }

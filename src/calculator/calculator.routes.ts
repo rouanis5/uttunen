@@ -1,12 +1,12 @@
 import Elysia from 'elysia'
-import CalculatorController from '#calculator/calculator.controller'
+import { CalculatorController } from '#calculator'
 import { makeElysiaCallback } from '#core/wrappers'
 
 const calcController = new CalculatorController()
 
 const route = (path: string = ''): string => `calc/${path}`
-const calculatorRoutes = new Elysia().get(
+
+export const calculatorRoutes = new Elysia().get(
   route(),
   makeElysiaCallback(calcController.get)
 )
-export default calculatorRoutes

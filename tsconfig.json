@@ -106,8 +106,10 @@
     "jsxFragmentFactory": "Html.Fragment",
     "paths": {
       "#home/*": ["./src/home/*"],
+      "#home": ["./src/home"],
       "#core/*": ["./src/core/*"],
-      "#calculator/*": ["./src/calculator/*"]
+      "#calculator/*": ["./src/calculator/*"],
+      "#calculator": ["./src/calculator/"]
     }
   }
 }

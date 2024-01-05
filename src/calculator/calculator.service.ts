@@ -1,6 +1,6 @@
 import { OperatorDTO } from '#calculator/dto'
 
-export default class calculatorService {
+export class calculatorService {
   private INTEGER_FORMATTER = new Intl.NumberFormat('en-us', {
     maximumFractionDigits: 0,
   })

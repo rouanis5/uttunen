@@ -1,6 +1,6 @@
 import { Home } from '#home/components'
 
-export default class HomeController {
+export  class HomeController {
   constructor() {}
 
   get() {

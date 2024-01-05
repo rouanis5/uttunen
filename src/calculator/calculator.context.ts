@@ -1,4 +1,4 @@
-import calculatorService from '#calculator/calculator.service'
+import { calculatorService } from '#calculator'
 import {
   CalculatorDTO,
   OperandsDTO,
@@ -9,7 +9,7 @@ import {
 import { CalculatorState } from '#calculator/interfaces'
 import { StartState, ErrorState } from '#calculator/states'
 
-export default class CalculatorContext {
+export class CalculatorContext {
   private state!: CalculatorState
 
   private current!: string
