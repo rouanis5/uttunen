@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { calculatorDTOSchema } from './calculator.dto'
+import { calculatorDTOSchema } from '#calculator/dto'
 
 export const stateEnum = [
   'START_STATE',

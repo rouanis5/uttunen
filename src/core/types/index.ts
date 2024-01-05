@@ -1,1 +1,1 @@
-export * from './httpRequest.type'
+export * from '#core/types/httpRequest.type'

@@ -1,9 +1,7 @@
-const NumberBtn = ({ digit = '' }) => {
+export const NumberBtn = ({ digit = '' }) => {
   return (
     <button hx-put="/insert" name="next" value={digit}>
       {digit}
     </button>
   )
 }
-
-export default NumberBtn

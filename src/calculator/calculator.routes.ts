@@ -1,6 +1,6 @@
 import Elysia from 'elysia'
-import CalculatorController from './calculator.controller'
-import makeElysiaCallback from '../core/wrappers/elysia.wrapper'
+import CalculatorController from '#calculator/calculator.controller'
+import { makeElysiaCallback } from '#core/wrappers'
 
 const calcController = new CalculatorController()
 

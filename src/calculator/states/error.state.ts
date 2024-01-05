@@ -1,7 +1,7 @@
-import { StateEnum } from '../dto/state.dto'
-import { CalculatorState } from '../interfaces/calculatorState.abstract'
+import { StateEnum } from '#calculator/dto'
+import { CalculatorState } from '#calculator/interfaces'
 
-export default class ErrorState extends CalculatorState {
+export class ErrorState extends CalculatorState {
   public getStateName(): StateEnum {
     return 'ERROR_STATE'
   }

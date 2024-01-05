@@ -1,11 +1,8 @@
-import { DigitDTO } from '../dto/digit.dto'
-import { OperatorDTO } from '../dto/operator.dto'
-import { StateEnum } from '../dto/state.dto'
-import { CalculatorState } from '../interfaces/calculatorState.abstract'
-import SavedState from './saved.state'
-import TypingOneState from './typingOne.state'
+import { StateEnum, DigitDTO, OperatorDTO } from '#calculator/dto'
+import { CalculatorState } from '#calculator/interfaces'
+import { TypingOneState, SavedState } from '#calculator/states'
 
-export default class StartState extends CalculatorState {
+export class StartState extends CalculatorState {
   public getStateName(): StateEnum {
     return 'START_STATE'
   }

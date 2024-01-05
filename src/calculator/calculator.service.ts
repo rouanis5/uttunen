@@ -1,4 +1,4 @@
-import { OperatorDTO } from './dto/operator.dto'
+import { OperatorDTO } from '#calculator/dto'
 
 export default class calculatorService {
   private INTEGER_FORMATTER = new Intl.NumberFormat('en-us', {

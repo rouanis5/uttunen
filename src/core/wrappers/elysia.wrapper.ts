@@ -1,12 +1,12 @@
 import { Context } from 'elysia'
-import { HttpRequest } from '../types/'
-import { CustomError } from '../errors'
+import { HttpRequest } from '#core/types'
+import { CustomError } from '#core/errors'
 
 export type RequestCallbackWrapper = (
   controller: (request: HttpRequest) => any
 ) => any
 
-const makeElysiaCallback: RequestCallbackWrapper =
+export const makeElysiaCallback: RequestCallbackWrapper =
   (controller: (request: HttpRequest) => any) => (context: Context) => {
     const httpRequest: HttpRequest = {
       body: context.body,
@@ -34,5 +34,3 @@ const makeElysiaCallback: RequestCallbackWrapper =
       return { error: error.message }
     }
   }
-
-export default makeElysiaCallback

@@ -1,4 +1,4 @@
-import Home from './components/Home'
+import { Home } from '#home/components'
 
 export default class HomeController {
   constructor() {}

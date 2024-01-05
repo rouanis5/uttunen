@@ -1,11 +1,13 @@
-import calculatorService from './calculator.service'
-import { CalculatorDTO, OperandsDTO } from './dto/calculator.dto'
-import { DigitDTO } from './dto/digit.dto'
-import { OperatorDTO } from './dto/operator.dto'
-import { StateDTO } from './dto/state.dto'
-import { CalculatorState } from './interfaces/calculatorState.abstract'
-import ErrorState from './states/error.state'
-import StartState from './states/start.state'
+import calculatorService from '#calculator/calculator.service'
+import {
+  CalculatorDTO,
+  OperandsDTO,
+  OperatorDTO,
+  DigitDTO,
+  StateDTO,
+} from '#calculator/dto'
+import { CalculatorState } from '#calculator/interfaces'
+import { StartState, ErrorState } from '#calculator/states'
 
 export default class CalculatorContext {
   private state!: CalculatorState

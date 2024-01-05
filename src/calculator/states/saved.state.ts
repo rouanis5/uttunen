@@ -1,11 +1,8 @@
-import { DigitDTO } from '../dto/digit.dto'
-import { OperatorDTO } from '../dto/operator.dto'
-import { StateEnum } from '../dto/state.dto'
-import { CalculatorState } from '../interfaces/calculatorState.abstract'
-import CalculatedState from './calculated.state'
-import TypingTwoState from './typingTwo.state'
+import { DigitDTO, OperatorDTO, StateEnum } from '#calculator/dto'
+import { CalculatorState } from '#calculator/interfaces'
+import { TypingTwoState, CalculatedState } from '#calculator/states'
 
-export default class SavedState extends CalculatorState {
+export class SavedState extends CalculatorState {
   public getStateName(): StateEnum {
     return 'SAVED_STATE'
   }
@@ -23,7 +20,9 @@ export default class SavedState extends CalculatorState {
   }
 
   public onEvaluate(): void {
-    this.context.setOperands({ current: this.context.getOperands().previous })
+    this.context.setOperands({
+      current: this.context.getOperands().previous.toString(),
+    })
     this.context.calculate()
     this.context.transitionTo(new CalculatedState())
   }

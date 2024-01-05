@@ -1,6 +1,6 @@
 import Elysia from 'elysia'
-import HomeController from './home.controller'
-import makeElysiaCallback from '../core/wrappers/elysia.wrapper'
+import HomeController from '#home/home.controller'
+import { makeElysiaCallback } from '#core/wrappers'
 
 const homeController = new HomeController()
 

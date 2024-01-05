@@ -1,4 +1,4 @@
-const CalcScreen = ({ current = '', previous = '', operator = '' }) => {
+export const CalcScreen = ({ current = '', previous = '', operator = '' }) => {
   return (
     <div id="CalcScreen">
       <p>
@@ -8,5 +8,3 @@ const CalcScreen = ({ current = '', previous = '', operator = '' }) => {
     </div>
   )
 }
-
-export default CalcScreen

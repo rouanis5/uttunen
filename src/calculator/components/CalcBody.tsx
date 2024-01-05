@@ -1,8 +1,6 @@
-import CalcScreen from './CalcScreen'
-import NumberBtn from './NumberBtn'
-import OperatorBtn from './OperatorBtn'
+import { CalcScreen, NumberBtn, OperatorBtn } from '#calculator/components'
 
-const CalcBody = ({ current = '', previous = '', operator = '' }) => {
+export const CalcBody = ({ current = '', previous = '', operator = '' }) => {
   return (
     <form hx-target="#CalcScreen" hx-swap="outerHTML">
       <CalcScreen current={current} previous={previous} operator={operator} />
@@ -34,5 +32,3 @@ const CalcBody = ({ current = '', previous = '', operator = '' }) => {
     </form>
   )
 }
-
-export default CalcBody
