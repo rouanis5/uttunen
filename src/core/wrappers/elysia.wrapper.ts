@@ -1,13 +1,15 @@
 import { Context } from 'elysia'
 import { HttpRequest } from '#core/types'
 import { CustomError } from '#core/errors'
+import { HttpResponse } from '#core/httpResponse'
 
 export type RequestCallbackWrapper = (
   controller: (request: HttpRequest) => any
 ) => any
 
-export const makeElysiaCallback: RequestCallbackWrapper =
-  (controller: (request: HttpRequest) => any) => (context: Context) => {
+export const makeElysiaCallback =
+  (controller: (request: HttpRequest, response: HttpResponse) => any) =>
+  (context: Context) => {
     const httpRequest: HttpRequest = {
       body: context.body,
       query: context.query,
@@ -17,8 +19,12 @@ export const makeElysiaCallback: RequestCallbackWrapper =
       Headers: context.headers,
     }
 
+    let response = new HttpResponse()
+
     try {
-      return controller(httpRequest)
+      const result = controller(httpRequest, response)
+      response.execute()
+      return result
     } catch (error) {
       if (!(error instanceof Error)) {
         context.set.status = 500
