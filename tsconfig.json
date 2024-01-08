@@ -108,6 +108,7 @@
       "#home/*": ["./src/home/*"],
       "#home": ["./src/home"],
       "#core/*": ["./src/core/*"],
+      "#core": ["./src/core"],
       "#calculator/*": ["./src/calculator/*"],
       "#calculator": ["./src/calculator/"]
     }
