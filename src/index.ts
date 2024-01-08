@@ -1,8 +1,8 @@
-import { Elysia } from 'elysia'
-import { html } from '@elysiajs/html'
+import { CalculatorController } from '#calculator'
+import { App } from '#core'
+import { ElysiaHandler } from '#core/handlers'
+import { HomeController } from './home'
 
-const app = new Elysia({}).use(html()).listen(process.env.PORT || 8080)
-
-console.log(
-  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
-)
+new App(new ElysiaHandler())
+  .addControllers(new HomeController(), new CalculatorController())
+  .execute(8080)
