@@ -1,4 +1,4 @@
-import CalculatorContext from '#calculator/calculator.context'
+import { CalculatorContext } from '#calculator/calculator.context'
 import { DigitDTO, OperatorDTO, StateEnum } from '#calculator/dto'
 
 export abstract class CalculatorState {
