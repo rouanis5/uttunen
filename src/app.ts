@@ -24,7 +24,31 @@ export class App {
     this.controllers.push(controller)
   }
 
+  private getFullPath(path: string, subpath: string): string {
+    if (path[0] === '/') {
+      path = path.slice(1)
+    }
+
+    if (subpath[0] === '/') {
+      subpath = subpath.slice(1)
+    }
+
+    return `${path}/${subpath}`
+  }
+
   execute(port: number): void {
+    this.controllers
+      .map((controller) => controller.getRoutes())
+      .map((routes) =>
+        routes.subroutes.map((subroute) => {
+          this.httpHandler.addRoute(
+            subroute.method,
+            this.getFullPath(routes.path, subroute.path),
+            subroute.callback
+          )
+        })
+      )
+
     this.httpHandler.serve(port)
     console.log(`Server is running at ${this.httpHandler.getUrl()}`)
   }

@@ -1,4 +1,5 @@
-import { ApiMethods } from '#core/types'
+import { ApiMethods, ControllerCallback } from '#core/types'
+import { HttpResponse } from '#core'
 
 export abstract class HttpHandler {
   abstract serve(port: number): void
@@ -7,6 +8,8 @@ export abstract class HttpHandler {
   abstract addRoute(
     method: ApiMethods,
     path: string,
-    callback: (...args: any[]) => any
+    callback: ControllerCallback
   ): void
+  abstract handleCallback(callback: ControllerCallback): any
+  // abstract handleResponse(response: HttpResponse): void
 }

@@ -8,6 +8,8 @@ export const Home = () => {
         {/* <script src="https://cdn.tailwindcss.com"></script> */}
       </head>
       <body>
+        <h1>Uttunen</h1>
+        <br />
         <div hx-get="/calc" hx-trigger="load" hx-swap="outerHTML"></div>
       </body>
       <script
