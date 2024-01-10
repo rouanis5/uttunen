@@ -1,6 +1,6 @@
 import { ApiMethods, Context } from '#core/types'
 
-export type ControllerCallback = (context?: Context) => any
+export type ControllerCallback = (context: Context) => any
 
 export type Subroute = {
   method: ApiMethods
