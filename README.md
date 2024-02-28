@@ -1,6 +1,12 @@
-# Uttunen
+# Uttunen 
 
-Uttunen is an advanced calculator built with latest hot technologies
+## What is Uttunen
+A basic calculator called **Uttunen** which is an amazigh (berber/kabyle) word means **numbers**.
+
+## Why to use Uttunen?
+- It is a Fullstack Typescript MVC app.
+- A high perfermance application without any frontend framework due to typescript, bun, HTMX
+- I applied recently learned design patterns which lead to build highly scalabe architecture
 
 ## Installation
 
